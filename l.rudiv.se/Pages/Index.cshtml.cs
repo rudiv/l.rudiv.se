@@ -40,6 +40,8 @@ namespace l.rudiv.se.Pages
 
         public async Task OnPostAsync()
         {
+            if (string.IsNullOrWhiteSpace(Url)) return;
+
             var any = await repo.GetByWhereAsync("Url = @Url", new { Url });
             if (!any.Any())
             {
